@@ -1,0 +1,68 @@
+//
+//  ViewController.swift
+//  Tip Application
+//
+//  Created by CPT265 on 2/25/19.
+//  Copyright (c) 2019 CPT265. All rights reserved.
+//
+
+import UIKit
+
+class ViewController: UIViewController {
+    
+    
+    @IBOutlet weak var txtFieldBillAmount: UITextField!
+    
+    @IBOutlet weak var slider: UISlider!
+    
+    @IBOutlet weak var lblTipAmount: UILabel!
+    
+    //This function links the slider and tip amount box to show how much the customer is tipping
+    @IBAction func valueChanged(sender: AnyObject) {
+        
+        var currentValue = Int(slider.value)
+        lblTipAmount.text = "\(currentValue)"
+    }
+    
+    
+    @IBOutlet weak var splitBillSelector: UISwitch!
+    
+    
+    @IBOutlet weak var txtViewSplitBill: UITextField!
+    
+    @IBOutlet weak var lblPartyAmount: UILabel!
+    
+    
+    //This function is for the switch to enable and disable textbox where you enter how many people are splitting the bill
+    @IBAction func splitBill(sender: AnyObject) {
+        
+        //currently has a bug where is will not disable the textbox after having been switched from the on position back to the off
+        if((splitBillSelector) != false){
+            txtViewSplitBill.userInteractionEnabled = true
+        }
+        else{
+            txtViewSplitBill.userInteractionEnabled = false
+        }
+        
+    }
+    
+    
+    @IBAction func splitBillPartyAmountLink(sender: AnyObject) {
+        
+        var numberOfPeople = txtViewSplitBill.text
+        lblPartyAmount.text = "\(numberOfPeople)"
+    }
+    
+    //This function calculates the tip by multiplying the bill and the tip amount and then dividing by 100
+    @IBAction func btnCalculateTipAmount(sender: AnyObject) {
+        
+            }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+
+}
+
